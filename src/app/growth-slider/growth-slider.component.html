@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="arrow-steps clearfix" #stepsContainer>
+    <div class="step" *ngFor="let item of data"> <span> <a href="#" >{{item}}</a></span> </div>
+  </div>
+  <div class="nav clearfix">
+    <button  (click)="prev()" class="prev">Previous</button> |
+    <button (click)="next()" class="next pull-right">Next</button>
+  </div>
+</div>
