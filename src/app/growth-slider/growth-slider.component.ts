@@ -21,12 +21,12 @@ export class GrowthSliderComponent implements OnInit, AfterViewInit {
       if (previous !== null) {
         if (previous > current) {
           this.stepsEl?.nativeElement.children[previous].classList.remove('current');
-          this.stepsEl?.nativeElement.children[previous].classList.remove('filled');
+          this.stepsEl?.nativeElement.children[current].classList.remove('filled');
           this.stepsEl.nativeElement.children[current].classList.add('current');
         } else {
+          this.stepsEl.nativeElement.children[previous].classList.add('filled');
           this.stepsEl.nativeElement.children[previous].classList.remove('current');
           this.stepsEl.nativeElement.children[current].classList.add('current');
-          this.stepsEl.nativeElement.children[current].classList.add('filled');
         }
       }
     });
@@ -34,7 +34,7 @@ export class GrowthSliderComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.stepsEl.nativeElement.children[0].classList.add('current');
-    this.stepsEl.nativeElement.children[0].classList.add('filled');
+    // this.stepsEl.nativeElement.children[0].classList.add('filled');
   }
 
   prev() {
