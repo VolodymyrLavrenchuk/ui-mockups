@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  steps = [0, 100, 200, 300, 400, 500];
+  steps = {
+    right: [0, 100, 200, 300, 400, 500],
+    left: [100, 80, 60, 40, 20, 0]
+  };
 }
