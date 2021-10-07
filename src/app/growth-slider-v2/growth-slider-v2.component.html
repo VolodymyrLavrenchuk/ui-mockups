@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="container__slider">
+    <div class="container__slider__items">
+      <div class="container__slider__items__remaining">
+        <div class="container__slider__items__remaining__value">{{left.remaining}} {{data.units}}</div>
+        <div class="container__slider__items__remaining__title">Max Remaining</div>
+      </div>
+      <div class="container__slider__items__chart">
+        <div class="container__slider__items__chart__header"></div>
+        <input type="range" min="0" max="100" class="left slider" [(ngModel)]="left.percent"
+               (ngModelChange)="leftChange($event)">
+        <div class="container__slider__items__chart__footer">{{data.left.title}} {{left.total}} {{data.units}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="container__slider">
+    <div class="container__slider__items">
+      <div class="container__slider__items__chart">
+        <div class="container__slider__items__chart__header right-text">{{data.right.title}} {{right.total}} {{data.units}}</div>
+        <input type="range" min="0" max="100" class="right slider" [(ngModel)]="right.percent"
+               (ngModelChange)="rightChange($event)">
+        <div class="container__slider__items__chart__footer"></div>
+      </div>
+      <div class="container__slider__items__remaining">
+        <div class="container__slider__items__remaining__value">{{right.remaining}} {{data.units}}</div>
+        <div class="container__slider__items__remaining__title">Max Remaining</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>FBA: {{left.current}} {{data.units}}, {{100 - left.percent}}%</p>
+<p>CKD: {{right.current}} {{data.units}}, {{right.percent}}%</p>
