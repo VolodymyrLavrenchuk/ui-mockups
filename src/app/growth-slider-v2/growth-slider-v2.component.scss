@@ -33,10 +33,17 @@
         &__header, &__footer {
           font-weight: bold;
           height: 18px;
+          display: flex;
+          align-items: center;
+          &__value {
+            width: 3.4rem;
+            margin-left: 1rem;
+          }
         }
 
         &__header {
           padding-bottom: 26px;
+          justify-content: flex-end;
         }
         &__footer {
           padding-top: 26px;
@@ -69,10 +76,6 @@
       }
     }
 
-    .right-text {
-      text-align: right;
-    }
-
     .slider {
       width: 100%;
       -webkit-appearance: none;
@@ -91,7 +94,6 @@
       }
 
       &::-webkit-slider-thumb {
-        -webkit-appearance: none;
         appearance: none;
         width: 25px;
         height: 25px;

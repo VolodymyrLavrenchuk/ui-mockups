@@ -54,7 +54,7 @@ export class GrowthSliderV2Component implements OnInit, AfterViewInit {
     this.right.total = this.data.right.initial;
   }
 
-  leftChange(value) {
+  leftPercentChange(value) {
     this.right.percent = 100 - value;
     this.left.current = Math.round((100 - value) * this.data.left.max / 100);
     this.left.remaining = this.data.left.max - this.left.current;
@@ -62,11 +62,21 @@ export class GrowthSliderV2Component implements OnInit, AfterViewInit {
     this.left.total = this.data.left.initial + this.left.current;
   }
 
-  rightChange(value) {
+  leftCurrentChange(value) {
+    this.left.percent = 100 - Math.round(value * 100) / this.data.left.max;
+    this.leftPercentChange(this.left.percent);
+  }
+
+  rightPercentChange(value) {
     this.left.percent = 100 - value;
     this.right.current = Math.round(value * this.data.right.max / 100);
     this.right.remaining = this.data.right.max - this.right.current;
     this.left.remaining = Math.round(this.data.left.max - (value * this.data.left.max / 100));
     this.right.total = this.data.right.initial + this.right.current;
+  }
+
+  rightCurrentChange(value) {
+    this.right.percent = Math.round(value * 100) / this.data.right.max;
+    this.rightPercentChange(this.right.percent);
   }
 }

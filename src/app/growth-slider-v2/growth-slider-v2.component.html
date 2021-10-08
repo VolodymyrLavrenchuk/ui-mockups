@@ -8,17 +8,37 @@
       <div class="container__slider__items__chart">
         <div class="container__slider__items__chart__header"></div>
         <input type="range" min="0" max="100" class="left slider" [(ngModel)]="left.percent"
-               (ngModelChange)="leftChange($event)">
-        <div class="container__slider__items__chart__footer">{{data.left.title}} {{left.total}} {{data.units}}</div>
+               (ngModelChange)="leftPercentChange($event)" list="tickmarks">
+        <datalist id="tickmarks">
+          <option value="0"></option>
+          <option value="20"></option>
+          <option value="40"></option>
+          <option value="60"></option>
+          <option value="80"></option>
+          <option value="100"></option>
+        </datalist>
+        <div class="container__slider__items__chart__footer">
+          <div>{{data.left.title}} {{left.total}} {{data.units}}</div>
+          <mat-form-field class="container__slider__items__chart__header__value">
+            <input matInput placeholder="Current" [(ngModel)]="left.current" name="LeftCurrent" (ngModelChange)="leftCurrentChange($event)">
+          </mat-form-field>
+          <div>&nbsp;{{data.units}}</div>
+        </div>
       </div>
     </div>
   </div>
   <div class="container__slider">
     <div class="container__slider__items">
       <div class="container__slider__items__chart">
-        <div class="container__slider__items__chart__header right-text">{{data.right.title}} {{right.total}} {{data.units}}</div>
+        <div class="container__slider__items__chart__header">
+          <div>{{data.right.title}} {{right.total}} {{data.units}}</div>
+          <mat-form-field class="container__slider__items__chart__header__value">
+            <input matInput placeholder="Current" [(ngModel)]="right.current" name="RightCurrent" (ngModelChange)="rightCurrentChange($event)">
+          </mat-form-field>
+          <div>&nbsp;{{data.units}}</div>
+        </div>
         <input type="range" min="0" max="100" class="right slider" [(ngModel)]="right.percent"
-               (ngModelChange)="rightChange($event)">
+               (ngModelChange)="rightPercentChange($event)">
         <div class="container__slider__items__chart__footer"></div>
       </div>
       <div class="container__slider__items__remaining">
@@ -28,6 +48,3 @@
     </div>
   </div>
 </div>
-
-<p>FBA: {{left.current}} {{data.units}}, {{100 - left.percent}}%</p>
-<p>CKD: {{right.current}} {{data.units}}, {{right.percent}}%</p>
